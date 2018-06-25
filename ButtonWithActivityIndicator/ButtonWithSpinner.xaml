@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:abstractions="clr-namespace:RoundedBoxView.Forms.Plugin.Abstractions;assembly=RoundedBoxView.Forms.Plugin.Abstractions"
+      x:Class="ButtonWithActivityIndicator.ButtonWithSpinner">
+    <Button x:Name="InnerButton" Text="Button text"
+            BackgroundColor="Tomato"
+            TextColor="White"
+            BorderWidth="1"
+            BorderColor="OrangeRed"
+            HeightRequest="50"
+            CornerRadius="25"
+            Clicked="OnClicked"
+            IsVisible="True" />
+    <Grid x:Name="InnerActivityView" IsVisible="False" Opacity="0">
+        <abstractions:RoundedBoxView x:Name="InnerBoxView" />
+        <ActivityIndicator x:Name="InnerActivityIndicator">
+             <ActivityIndicator.Scale>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS">1</On>
+                    <On Platform="Android">0.7</On>
+                </OnPlatform>
+            </ActivityIndicator.Scale>
+        </ActivityIndicator>  
+   </Grid>
+</Grid>
